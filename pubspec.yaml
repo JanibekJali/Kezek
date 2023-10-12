@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   animated_theme_switcher: ^2.0.8
   line_awesome_flutter: ^2.0.0
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
