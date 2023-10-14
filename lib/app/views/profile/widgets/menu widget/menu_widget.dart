@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/widgets/menu%20widget/contenersMenu.dart';
+import 'package:kazek/app/views/profile/widgets/menu%20widget/contenersMenu.dart';
 
 class MenuWidget extends StatelessWidget {
   const MenuWidget({Key? key}) : super(key: key);

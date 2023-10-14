@@ -1,6 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:kazek/app/constants/theme_const.dart';
+import 'package:kazek/components/constants/theme_const.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class CircleAvatarWidgets extends StatelessWidget {

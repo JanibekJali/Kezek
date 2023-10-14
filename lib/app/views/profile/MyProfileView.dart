@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/widgets/avatar%20widget/avatar_widgets.dart';
-import 'package:kazek/app/views/widgets/menu%20widget/menu_widget.dart';
-import 'package:kazek/app/views/widgets/profile%20name/profileName.dart';
+import 'package:kazek/app/views/profile/widgets/avatar%20widget/avatar_widgets.dart';
+import 'package:kazek/app/views/profile/widgets/menu%20widget/menu_widget.dart';
+import 'package:kazek/app/views/profile/widgets/profile%20name/profileName.dart';
 
 
 class MyProfileView extends StatefulWidget {

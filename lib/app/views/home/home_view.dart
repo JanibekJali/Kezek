@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
+import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
@@ -11,15 +11,20 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          body: Column(
-            children: [
-          ]),
-      bottomNavigationBar:  BottomNavigation(index: 1,),
-      appBar: AppBar(
-  backgroundColor: Colors.transparent,
-      ), 
-    ));
+    return Container(
+      color: Colors.black,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text(
+            'Kezek',
+            style: TextStyle(fontSize: 26),
+          ),
+        ),
+        body: Column(children: [
+          CatalogWidget(),
+        ]),
+      ),
+    );
   }
 }
