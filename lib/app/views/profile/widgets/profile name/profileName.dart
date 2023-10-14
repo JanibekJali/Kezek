@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kazek/app/constants/theme_const.dart';
+import 'package:kazek/components/constants/theme_const.dart';
 
 class ProfileName extends StatefulWidget {
   const ProfileName({Key? key}) : super(key: key);

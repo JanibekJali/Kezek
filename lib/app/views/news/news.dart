@@ -17,9 +17,7 @@ class NewsPage extends StatelessWidget {
     return Scaffold(
       
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: BottomNavigation(
-        index: 0,
-      ),
+    
       body: ListView(
         padding: EdgeInsets.zero,
          children: [

@@ -1,52 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/news/news.dart';
+import 'package:kazek/app/views/profile/MyProfileView.dart';
 
+class NavbarPage extends StatefulWidget {
+  const NavbarPage({Key? key}) : super(key: key);
 
-class BottomNavigation extends StatelessWidget {
-const BottomNavigation({ Key? key, required this.index }) : super(key: key);
-final int index;
   @override
-  Widget build(BuildContext context){
-    return  BottomNavigationBar(
-       currentIndex: index ,
+  State<NavbarPage> createState() => _NavbarPageState();
+}
 
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.black.withAlpha(100),
-
-      items: [
-    BottomNavigationBarItem(icon: IconButton(
-      icon: Icon(Icons.search,color: Colors.black,) ,
-       onPressed: () { 
-          Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView(),));
-        },
-    ),label: 'search'
-    ),
-    BottomNavigationBarItem(icon: IconButton(
-      icon: Icon(Icons.newspaper,color: Colors.black,) ,
-       onPressed: () { 
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>  NewsPage(),));
-        },
-    ),label: 'news'
-    ),
-    BottomNavigationBarItem(icon: IconButton(
-      icon: Icon(Icons.book,color: Colors.black,) ,
-       onPressed: () { 
-        //  Navigator.push(context, MaterialPageRoute(builder: (context) =>  lessons(),));
-        },
-    ),label: 'lessons'
-    ),
-    BottomNavigationBarItem(icon: IconButton(
-      icon: Icon(Icons.person,color: Colors.black,) ,
-       onPressed: () { 
-        //  Navigator.push(context, MaterialPageRoute(builder: (context) =>  Profile(),));
-        },
-    ),label: 'profile'
-    ),
-  
-
-      ],);
+class _NavbarPageState extends State<NavbarPage> {
+  int _selectedInhdex = 0;
+  final _screens = [
+    HomeView(),
+    NewsPage(),
+    HomeView(),
+    MyProfileView(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColorLight,
+      body: _screens[_selectedInhdex],
+      bottomNavigationBar: Container(
+        height: 60,
+        child: BottomNavigationBar(
+          backgroundColor: Theme.of(context).canvasColor,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Color(0xFF7165D6),
+          unselectedItemColor: Colors.black,
+          selectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+          currentIndex: _selectedInhdex,
+          onTap: (index) {
+            setState(() {
+              _selectedInhdex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Serch'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.chat_rounded), label: 'Articles'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month_outlined), label: 'Lessons'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+        ),
+      ),
+    );
   }
 }
