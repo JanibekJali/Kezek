@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -6,6 +7,8 @@ class Profile extends StatelessWidget {
   TabController? controller;
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -40,7 +43,7 @@ class Profile extends StatelessWidget {
                     child: SizedBox(
                       width: 250,
                       child: Text(
-                        'Gafurov Ahmadali Kodirovich',
+                        'Boroda Barbershop',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.w800),
@@ -94,21 +97,24 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                   //
-                  Container(
-                      width: 300,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.blue[900],
-                      ),
-                      child: Text(
-                        'Contact'.toUpperCase(),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w700),
-                      ))
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                        width: 300,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.blue[900],
+                        ),
+                        child: Text(
+                          'Get in line'.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w700),
+                        )),
+                  )
                 ]),
               ),
 
@@ -175,8 +181,8 @@ class Profile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 150,
-                  width: 400,
+                  height: height * 0.18,
+                  width: width * 0.99,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.white),
@@ -193,10 +199,10 @@ class Profile extends StatelessWidget {
                               color: const Color.fromARGB(255, 8, 46, 104)),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(15),
                           child: Container(
-                            height: 70,
-                            width: 300,
+                            height: height * 0.1,
+                            width: width * 0.87,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
@@ -208,15 +214,74 @@ class Profile extends StatelessWidget {
                                     offset: const Offset(0, 3),
                                   ),
                                 ]),
-                            child: const Text(
-                              '0 сом',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w800,
+                            child: ListTile(
+                              // location icon
+                              leading: Icon(
+                                CupertinoIcons.location_solid,
+                                size: width * 0.08,
+                                color: Colors.blue[900],
+                              ),
+                              // location title
+                              title: const Text('Boroda Barbershop'),
+                              titleTextStyle: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // location subtitle
+                              subtitle: const Text('Курманжан-Датка 351/2 ...'),
+                              subtitleTextStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // contacts
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: height * 0.080,
+                  width: width * 0.98,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                          width: 2,
+                          color: const Color.fromARGB(255, 8, 46, 104)),
+                      color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // contact icon
+                        CircleAvatar(
+                          backgroundColor:
+                              const Color.fromARGB(255, 8, 46, 104),
+                          child: Icon(
+                            CupertinoIcons.phone,
+                            size: height * 0.028,
+                            color: Colors.white,
+                          ),
+                        ),
+                        // contact number
+                        const Text(
+                          '+996 554 995 321',
+                          style: TextStyle(
+                              fontSize: 19,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        // message icon
+                        Icon(
+                          Icons.message_outlined,
+                          color: Color.fromARGB(255, 8, 46, 104),
+                          size: height * 0.043,
+                        )
                       ],
                     ),
                   ),
