@@ -3,7 +3,6 @@ import 'package:kazek/app/views/profile/widgets/avatar%20widget/avatar_widgets.d
 import 'package:kazek/app/views/profile/widgets/menu%20widget/menu_widget.dart';
 import 'package:kazek/app/views/profile/widgets/profile%20name/profileName.dart';
 
-
 class MyProfileView extends StatefulWidget {
   const MyProfileView({Key? key}) : super(key: key);
 
@@ -16,18 +15,20 @@ class _MyProfileViewState extends State<MyProfileView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-            CircleAvatarWidgets(),
-            SizedBox(
-              height: 15,
-            ),
-            ProfileName(),
-            MenuWidget(),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(2),
+              ),
+              CircleAvatarWidgets(),
+              Padding(
+                padding: EdgeInsets.all(2),
+              ),
+              ProfileName(),
+              MenuWidget(),
+            ],
+          ),
         ),
       ),
     );

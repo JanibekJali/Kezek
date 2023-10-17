@@ -12,11 +12,13 @@ class MenuWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Column(
       children: [
         Container(
           height: 50,
-          width: 350,
+          width: width * 0.8,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: Theme.of(context).primaryColorLight),

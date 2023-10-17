@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799385863021",
+    "project_id": "kezek-4af63",
+    "storage_bucket": "kezek-4af63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799385863021:android:9ed2576621f27d3cc69064",
+        "android_client_info": {
+          "package_name": "com.example.kazek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcBcmDgLMpov9N-eVtKwpWGFL1xCWh8s0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
