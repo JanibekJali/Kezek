@@ -22,8 +22,8 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
-            // home: NavbarPage(),
             home: HomePage(),
+            
             // home: SearchScreen(),
 
             debugShowCheckedModeBanner: false,
