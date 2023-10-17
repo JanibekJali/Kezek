@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
+import 'package:kazek/app/views/search/search_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -15,11 +16,7 @@ class _HomeViewState extends State<HomeView> {
       color: Colors.black,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text(
-            'Kezek',
-            style: TextStyle(fontSize: 26),
-          ),
+          actions: [],
         ),
         body: Column(children: [
           CatalogWidget(),

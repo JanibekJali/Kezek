@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/register/second_page.dart';
-
-
+import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -117,9 +115,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               height: 20,
                             ),
-
-
-TextFormField(
+                            TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               decoration: InputDecoration(
@@ -153,15 +149,32 @@ TextFormField(
                             ),
                             SizedBox(height: 32.0),
                             ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(255, 7, 10, 212),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromARGB(255, 7, 10, 212),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                  ),
                                 ),
-                              ),
-                              onPressed: _submitForm,
-                              child: Text('Login'),
+                                onPressed: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NavbarPage())),
+                                child: Column(
+                                  children: [
+                                    Text('Log in'),
+                                  ],
+                                )),
+                            SizedBox(
+                              height: 5,
                             ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SecondPage()));
+                                },
+                                child: Text('You dont have acount? Sing up '))
                           ],
                         ),
                       ),

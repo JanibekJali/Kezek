@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/register/home_page.dart';
+import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -109,8 +110,7 @@ class _SecondPageState extends State<SecondPage> {
                             SizedBox(
                               height: 20,
                             ),
-
-TextFormField(
+                            TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               decoration: InputDecoration(
@@ -173,9 +173,27 @@ TextFormField(
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                               ),
-                              onPressed: _submitForm,
+                              onPressed: () {
+                                _submitForm();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NavbarPage()),
+                                );
+                              },
                               child: Text('Sign Up'),
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()));
+                                },
+                                child: Text('You alredy have acount? Sing in '))
                           ],
                         ),
                       ),

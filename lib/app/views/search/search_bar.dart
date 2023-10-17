@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -47,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             SizedBox(width: 8),
             Text(
-              '𝕄𝕒𝕚𝕟 𝕊𝕖𝕒𝕣𝕔𝕙',
+              'Kezek App',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -87,7 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: Column(
-        children: <Widget>[
+        children: [
           Expanded(
             child: ListView.builder(
               itemCount: filteredItems.length,
@@ -100,6 +101,7 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             ),
           ),
+          
         ],
       ),
     );

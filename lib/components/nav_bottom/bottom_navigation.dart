@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/news/news.dart';
 import 'package:kazek/app/views/profile/MyProfileView.dart';
+import 'package:kazek/app/views/search/search_bar.dart';
 
 class NavbarPage extends StatefulWidget {
   const NavbarPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class NavbarPage extends StatefulWidget {
 class _NavbarPageState extends State<NavbarPage> {
   int _selectedInhdex = 0;
   final _screens = [
-    HomeView(),
+    SearchScreen(),
     NewsPage(),
     HomeView(),
     MyProfileView(),
