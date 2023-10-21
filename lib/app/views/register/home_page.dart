@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
    Future<void> signIn() async {
-    final userModel = UserModel();
+ 
     setState(() {
   
     });
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                 ),
-                                onPressed: () =>signIn() ),
+                                onPressed: () => signIn() ),
                             SizedBox(
                               height: 5,
                             ),
