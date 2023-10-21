@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
     if (_formKey.currentState!.validate()) {
       final username = nameController.text;
       final email = emailController.text;
-      final password =passwordController.text;
+      final password = passwordController.text;
       final repeatPassword = repeatPasswordController.text;
       print('Username: $username');
       print('Email: $email');
@@ -67,11 +67,9 @@ class _HomePageState extends State<HomePage> {
       print('Repeat Password: $repeatPassword');
     }
   }
-   Future<void> signIn() async {
- 
-    setState(() {
-  
-    });
+
+  Future<void> signIn() async {
+    setState(() {});
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(
@@ -81,9 +79,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeView(
-                      
-                    ),
+                    builder: (context) => HomeView(),
                   ),
                 ),
               });
@@ -91,16 +87,13 @@ class _HomePageState extends State<HomePage> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         log('No user found for that email. ');
-       
       } else if (e.code == 'wrong-password') {
         log('Wrong password provided for that user. ');
-       
+
         log('password: ${e.code.length} ');
       }
     }
-    setState(() {
-     
-    });
+    setState(() {});
   }
 
   @override
@@ -187,16 +180,17 @@ class _HomePageState extends State<HomePage> {
                               obscureText: !_isPasswordVisible,
                               validator: _validatePassword,
                             ),
+                         
                             SizedBox(height: 32.0),
                             ElevatedButton(
-                              child: Text('Log in'),
+                                child: Text('Log in'),
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(255, 7, 10, 212),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                 ),
-                                onPressed: () => signIn() ),
+                                onPressed: () => signIn()),
                             SizedBox(
                               height: 5,
                             ),

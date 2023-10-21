@@ -224,7 +224,26 @@ Future<void> signUp() async {
                               obscureText: !_isRepeatPasswordVisible,
                               validator: _validateRepeatPassword,
                             ),
-                            SizedBox(height: 32.0),
+                             SizedBox(height: 15.0),
+                            Row(
+                              children: [
+                                
+                                InkWell(
+                                  onTap: () {
+                                    
+                                  },
+                                  child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration:
+                                          BoxDecoration(shape: BoxShape.circle),
+                                      child: Image.asset('assets/images/google.jpg',
+                                          fit: BoxFit.cover)),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 15.0),
+                         
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 primary: Color.fromARGB(255, 7, 10, 212),
