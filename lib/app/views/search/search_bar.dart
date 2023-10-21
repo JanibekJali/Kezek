@@ -87,22 +87,26 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: filteredItems.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(filteredItems[index]),
-                  leading: Icon(Icons.search),
-                  onTap: () {},
-                );
-              },
+      body: SingleChildScrollView(
+   keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredItems.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(filteredItems[index]),
+                    leading: Icon(Icons.search),
+                    onTap: () {},
+                  );
+                },
+              ),
             ),
-          ),
-          CatalogWidget(),
-        ],
+            CatalogWidget(),
+          ],
+        ),
       ),
     );
   }

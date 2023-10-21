@@ -1,6 +1,12 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
-import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
+import 'package:kazek/data/models/user_model.dart';
+import 'package:uuid/uuid.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -9,15 +15,25 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
       TextEditingController();
 
   bool _isPasswordVisible = false;
   bool _isRepeatPasswordVisible = false;
+  bool _isLoading = false;
+  
 
+
+  String? _validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Name is required';
+    } else if (!value.contains('@')) {
+      return 'Invalid Name format';
+    }
+    return null;}
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -39,22 +55,81 @@ class _SecondPageState extends State<SecondPage> {
   String? _validateRepeatPassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
-    } else if (value != _passwordController.text) {
+    } else if (value != passwordController.text) {
       return 'The passwords do not match';
     }
     return null;
   }
 
+final users = FirebaseFirestore.instance.collection('users');
+  final _uid = Uuid().v4();
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      final username = _usernameController.text;
-      final email = _emailController.text;
-      final password = _passwordController.text;
-      final repeatPassword = _repeatPasswordController.text;
+      final username = nameController.text;
+      final email = emailController.text;
+      final password = passwordController.text;
+      final repeatPassword = repeatPasswordController.text;
       print('Username: $username');
       print('Email: $email');
       print('Password: $password');
       print('Repeat Password: $repeatPassword');
+    }
+  }
+  
+
+    
+  Future<void> addUser() {
+    final userModel = UserModel(
+      email: emailController.text,
+      name: nameController.text,
+      id: _uid,
+    );
+    return users
+        .add(
+          userModel.toJson(),
+        )
+        .then((value) => {
+           
+            })
+        .catchError((error) => log("Failed to add user: $error"));
+  }
+
+  Future<void> signUp() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            
+            email: emailController.text,
+            password: passwordController.text,
+          )
+          .then((value) => {
+                // addUser(),
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView(),)),
+                FocusScope.of(context).requestFocus(FocusNode()),
+                nameController.clear(),
+                emailController.clear(),
+                passwordController.clear(),
+                repeatPasswordController.clear(),
+              });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        log('The password provided is too weak.');
+       
+      } else if (e.code == 'email-already-in-use') {
+        log('The account already exists for that email.');
+     
+      }
+      setState(() {
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      log('e ==> $e');
     }
   }
 
@@ -112,7 +187,18 @@ class _SecondPageState extends State<SecondPage> {
                             ),
                             TextFormField(
                               keyboardType: TextInputType.emailAddress,
-                              controller: _emailController,
+                              controller: emailController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                hintText: 'Name',
+                              ),
+                              validator: _validateName,
+                            ),
+                              SizedBox(height: 16.0),
+                            TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              controller: emailController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -123,7 +209,7 @@ class _SecondPageState extends State<SecondPage> {
                             SizedBox(height: 16.0),
                             TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: _passwordController,
+                              controller: passwordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -145,7 +231,7 @@ class _SecondPageState extends State<SecondPage> {
                             SizedBox(height: 16.0),
                             TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: _repeatPasswordController,
+                              controller: repeatPasswordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -175,13 +261,10 @@ class _SecondPageState extends State<SecondPage> {
                               ),
                               onPressed: () {
                                 _submitForm();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NavbarPage()),
-                                );
+                                signUp();
+                              
                               },
-                              child: Text('Sign Up'),
+                              child: Text('Sign in'),
                             ),
                             SizedBox(
                               height: 5,
@@ -191,9 +274,9 @@ class _SecondPageState extends State<SecondPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomePage()));
+                                          builder: (context) => HomePage1()));
                                 },
-                                child: Text('You alredy have acount? Sing in '))
+                                child: Text('You already have acount? Sing in '))
                           ],
                         ),
                       ),

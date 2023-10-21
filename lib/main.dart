@@ -1,9 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/register/home_page.dart';
-import 'package:kazek/app/views/search/search_bar.dart';
+import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/components/constants/theme_const.dart';
-import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -28,7 +26,7 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
-            home: HomePage(),
+            home: HomeView(),
 
             // home: SearchScreen(),
 
