@@ -43,7 +43,7 @@ class CatalogWidget extends StatelessWidget {
             ),
             Catalog(
               title: 'Chemist\'s',
-              imageName: 'assets/images/chemists.jpeg',
+              imageName: 'assets/images/chemists.png',
               onTap: () {
                 Navigator.push(
                     context,
@@ -53,7 +53,7 @@ class CatalogWidget extends StatelessWidget {
             ),
             Catalog(
               title: 'Dentist',
-              imageName: 'assets/images/dentist.jpeg',
+              imageName: 'assets/images/dentist.png',
               onTap: () {
                 Navigator.push(
                     context,
