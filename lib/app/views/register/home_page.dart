@@ -1,6 +1,11 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/second_page.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
+import 'package:kazek/data/models/user_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,10 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
       TextEditingController();
 
   bool _isPasswordVisible = false;
@@ -39,7 +44,7 @@ class _HomePageState extends State<HomePage> {
   String? _validateRepeatPassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
-    } else if (value != _passwordController.text) {
+    } else if (value != passwordController.text) {
       return 'The passwords do not match';
     }
     return null;
@@ -52,15 +57,50 @@ class _HomePageState extends State<HomePage> {
           builder: (context) => SecondPage(),
         ));
     if (_formKey.currentState!.validate()) {
-      final username = _usernameController.text;
-      final email = _emailController.text;
-      final password = _passwordController.text;
-      final repeatPassword = _repeatPasswordController.text;
+      final username = nameController.text;
+      final email = emailController.text;
+      final password =passwordController.text;
+      final repeatPassword = repeatPasswordController.text;
       print('Username: $username');
       print('Email: $email');
       print('Password: $password');
       print('Repeat Password: $repeatPassword');
     }
+  }
+   Future<void> signIn() async {
+ 
+    setState(() {
+  
+    });
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text)
+          .then((value) => {
+                FocusScope.of(context).requestFocus(FocusNode()),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeView(
+                      
+                    ),
+                  ),
+                ),
+              });
+      // log('creadetitial ==> ${credential}');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        log('No user found for that email. ');
+       
+      } else if (e.code == 'wrong-password') {
+        log('Wrong password provided for that user. ');
+       
+        log('password: ${e.code.length} ');
+      }
+    }
+    setState(() {
+     
+    });
   }
 
   @override
@@ -117,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             TextFormField(
                               keyboardType: TextInputType.emailAddress,
-                              controller: _emailController,
+                              controller: emailController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -128,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(height: 16.0),
                             TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: _passwordController,
+                              controller: passwordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -149,21 +189,14 @@ class _HomePageState extends State<HomePage> {
                             ),
                             SizedBox(height: 32.0),
                             ElevatedButton(
+                              child: Text('Log in'),
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(255, 7, 10, 212),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                 ),
-                                onPressed: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => NavbarPage())),
-                                child: Column(
-                                  children: [
-                                    Text('Log in'),
-                                  ],
-                                )),
+                                onPressed: () => signIn() ),
                             SizedBox(
                               height: 5,
                             ),

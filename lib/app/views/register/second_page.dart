@@ -1,4 +1,8 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
@@ -9,15 +13,23 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repeatPasswordController =
       TextEditingController();
 
   bool _isPasswordVisible = false;
   bool _isRepeatPasswordVisible = false;
 
+  String? _validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Name is required';
+    } else if (!value.contains('@')) {
+      return 'Invalid name format';
+    }
+    return null;
+  }
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -39,7 +51,7 @@ class _SecondPageState extends State<SecondPage> {
   String? _validateRepeatPassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
-    } else if (value != _passwordController.text) {
+    } else if (value != passwordController.text) {
       return 'The passwords do not match';
     }
     return null;
@@ -47,14 +59,50 @@ class _SecondPageState extends State<SecondPage> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      final username = _usernameController.text;
-      final email = _emailController.text;
-      final password = _passwordController.text;
-      final repeatPassword = _repeatPasswordController.text;
+      final username = nameController.text;
+      final email = emailController.text;
+      final password = passwordController.text;
+      final repeatPassword = repeatPasswordController.text;
       print('Username: $username');
       print('Email: $email');
       print('Password: $password');
       print('Repeat Password: $repeatPassword');
+    }
+  }
+Future<void> signUp() async {
+   
+  
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            
+            email: emailController.text,
+            password: passwordController.text,
+          )
+          .then((value) => {
+            FocusScope.of(context).requestFocus(FocusNode()),
+                // addUser(),
+              
+                
+                nameController.clear(),
+                emailController.clear(),
+                passwordController.clear(),
+                repeatPasswordController.clear(),
+              }).then((value) =>   Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView(),)),);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        log('The password provided is too weak.');
+       
+      } else if (e.code == 'email-already-in-use') {
+        log('The account already exists for that email.');
+     
+      }
+      setState(() {
+       
+      });
+    } catch (e) {
+     
+      log('e ==> $e');
     }
   }
 
@@ -112,7 +160,18 @@ class _SecondPageState extends State<SecondPage> {
                             ),
                             TextFormField(
                               keyboardType: TextInputType.emailAddress,
-                              controller: _emailController,
+                              controller: nameController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                hintText: 'Name',
+                              ),
+                              validator: _validateEmail,
+                            ),
+                            SizedBox(height: 16.0),
+                            TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              controller: emailController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -123,7 +182,7 @@ class _SecondPageState extends State<SecondPage> {
                             SizedBox(height: 16.0),
                             TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: _passwordController,
+                              controller: passwordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -145,7 +204,7 @@ class _SecondPageState extends State<SecondPage> {
                             SizedBox(height: 16.0),
                             TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: _repeatPasswordController,
+                              controller: repeatPasswordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
@@ -175,11 +234,7 @@ class _SecondPageState extends State<SecondPage> {
                               ),
                               onPressed: () {
                                 _submitForm();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NavbarPage()),
-                                );
+                              signUp();
                               },
                               child: Text('Sign Up'),
                             ),
