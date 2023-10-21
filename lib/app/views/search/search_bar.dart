@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
+import 'package:kazek/app/views/home/home_view.dart';
+import 'package:kazek/app/views/search/searching_result.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -9,14 +12,14 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   List<String> items = [
     'Eminem',
-    'Banana',
-    'Cherry',
+    'Boris',
+    'Chiky',
     'Jons',
-    'Grapes',
-    'Lemon',
-    'Mango',
-    'Orange',
-    'Peach',
+    'Gulmira',
+    'Levinson',
+    'Miyagi',
+    'Or',
+    'Pavel',
     'Pear',
     'Pineapple',
     'Strawberry',
@@ -24,7 +27,7 @@ class _SearchScreenState extends State<SearchScreen> {
   ];
 
   List<String> filteredItems = [];
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController controller = TextEditingController();
 
   void filterItems(String query) {
     filteredItems.clear();
@@ -41,69 +44,68 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white10,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 9, 55, 93),
-        elevation: 4,
-        title: Row(
-          children: [
-            SizedBox(width: 8),
-            Text(
-              'Kezek App',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 9, 55, 93),
+        title: Text('Search App'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(50.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 40.6,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: TextField(
-                    controller: _searchController,
-                    onChanged: filterItems,
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      prefixIcon: Icon(Icons.search),
-                      border: InputBorder.none,
+          preferredSize: Size.fromHeight(60.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 370,
+              height: 46,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: const EdgeInsets.only(right: 10, left: 8),
+                    child: Icon(
+                      CupertinoIcons.search,
+                      color: Colors.white,
+                      size: 23,
                     ),
                   ),
-                ),
+                  Expanded(
+                    child: TextField(
+                      controller: controller,
+                      onChanged: (query) {
+                        filterItems(query);
+                        setState(() {});
+                      },
+                      cursorColor: Colors.white,
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
+                      decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Search...',
+                          hintStyle:
+                              TextStyle(fontSize: 15, color: Colors.white)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 3),
+                    child: IconButton(
+                      onPressed: () {
+                        controller.clear();
+                        FocusScope.of(context).unfocus();
+                      },
+                      icon: const Icon(
+                        Icons.cancel_rounded,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: filteredItems.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(filteredItems[index]),
-                  leading: Icon(Icons.search),
-                  onTap: () {},
-                );
-              },
-            ),
-          ),
-          CatalogWidget(),
-        ],
-      ),
+      body: controller.text.isEmpty
+          ? HomeView()
+          : SearchingResultPage(filteredItems: filteredItems),
     );
   }
 }

@@ -12,23 +12,13 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.blue,
-        //   title: Text(
-        //     'Kezek',
-        //     style: TextStyle(fontSize: 26),
-        //   ),
-        //   actions: [SearchScreen()],
-        // ),
-
-        body: Column(children: [
-          SearchScreen(),
-          CatalogWidget(),
-        ]),
+    return Column(children: [
+      Text(
+        'Что вас беспокоит?',
+        style: TextStyle(
+            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
       ),
-    );
+      CatalogWidget(),
+    ]);
   }
 }
