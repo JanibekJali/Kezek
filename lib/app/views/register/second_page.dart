@@ -226,8 +226,13 @@ Future<void> signUp() async {
                             ),
                              SizedBox(height: 15.0),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                
+                                 Text('sign up with',style: TextStyle(
+                                  fontSize: 15
+                                 ),),
+
+                            SizedBox(width: 4),
                                 InkWell(
                                   onTap: () {
                                     

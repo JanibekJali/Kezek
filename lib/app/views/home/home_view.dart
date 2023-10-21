@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
+import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _HomeViewState extends State<HomeView> {
     return Container(
       color: Colors.black,
       child: Scaffold(
+        bottomNavigationBar: NavbarPage() ,
         // appBar: AppBar(
         //   backgroundColor: Colors.blue,
         //   title: Text(
