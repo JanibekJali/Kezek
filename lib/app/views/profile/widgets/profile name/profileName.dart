@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 
@@ -21,7 +22,7 @@ class _ProfileNameState extends State<ProfileName> {
           height: 6,
         ),
         Text(
-          'kadirovmuhammadaziz79@gmail.com',
+          FirebaseAuth.instance.currentUser!.email.toString(),
           style: kSubTitleTextStyly,
         ),
       ],

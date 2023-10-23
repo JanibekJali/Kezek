@@ -25,11 +25,10 @@ class _SecondPageState extends State<SecondPage> {
   String? _validateName(String? value) {
     if (value == null || value.isEmpty) {
       return 'Name is required';
-    } else if (!value.contains('@')) {
-      return 'Invalid name format';
     }
     return null;
   }
+
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -69,39 +68,38 @@ class _SecondPageState extends State<SecondPage> {
       print('Repeat Password: $repeatPassword');
     }
   }
-Future<void> signUp() async {
-   
-  
+
+  Future<void> signUp() async {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-            
             email: emailController.text,
             password: passwordController.text,
           )
           .then((value) => {
-            FocusScope.of(context).requestFocus(FocusNode()),
+                FocusScope.of(context).requestFocus(FocusNode()),
                 // addUser(),
-              
-                
+
                 nameController.clear(),
                 emailController.clear(),
                 passwordController.clear(),
                 repeatPasswordController.clear(),
-              }).then((value) =>   Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView(),)),);
+              })
+          .then(
+            (value) => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeView(),
+                )),
+          );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         log('The password provided is too weak.');
-       
       } else if (e.code == 'email-already-in-use') {
         log('The account already exists for that email.');
-     
       }
-      setState(() {
-       
-      });
+      setState(() {});
     } catch (e) {
-     
       log('e ==> $e');
     }
   }
@@ -166,7 +164,7 @@ Future<void> signUp() async {
                                     borderRadius: BorderRadius.circular(10)),
                                 hintText: 'Name',
                               ),
-                              validator: _validateEmail,
+                              validator: _validateName,
                             ),
                             SizedBox(height: 16.0),
                             TextFormField(
@@ -234,7 +232,7 @@ Future<void> signUp() async {
                               ),
                               onPressed: () {
                                 _submitForm();
-                              signUp();
+                                signUp();
                               },
                               child: Text('Sign Up'),
                             ),
