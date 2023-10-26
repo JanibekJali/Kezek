@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/auth/auth_service.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/second_page.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     if (_formKey.currentState!.validate()) {
       final username = nameController.text;
       final email = emailController.text;
-      final password =passwordController.text;
+      final password = passwordController.text;
       final repeatPassword = repeatPasswordController.text;
       print('Username: $username');
       print('Email: $email');
@@ -67,11 +68,9 @@ class _HomePageState extends State<HomePage> {
       print('Repeat Password: $repeatPassword');
     }
   }
-   Future<void> signIn() async {
- 
-    setState(() {
-  
-    });
+
+  Future<void> signIn() async {
+    setState(() {});
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(
@@ -81,9 +80,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeView(
-                      
-                    ),
+                    builder: (context) => HomeView(),
                   ),
                 ),
               });
@@ -91,18 +88,16 @@ class _HomePageState extends State<HomePage> {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         log('No user found for that email. ');
-       
       } else if (e.code == 'wrong-password') {
         log('Wrong password provided for that user. ');
-       
+
         log('password: ${e.code.length} ');
       }
     }
-    setState(() {
-     
-    });
+    setState(() {});
   }
 
+  final AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,14 +184,14 @@ class _HomePageState extends State<HomePage> {
                             ),
                             SizedBox(height: 32.0),
                             ElevatedButton(
-                              child: Text('Log in'),
+                                child: Text('Log in'),
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(255, 7, 10, 212),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                 ),
-                                onPressed: () => signIn() ),
+                                onPressed: () => signIn()),
                             SizedBox(
                               height: 5,
                             ),
@@ -214,6 +209,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 50,
+                ),
+                ElevatedButton.icon(
+                  onPressed: authService.signinWithGoogle,
+                  icon: Icon(Icons.account_circle),
+                  label: Text('Войти через Google'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent, // Цвет фона кнопки
+                    onPrimary: Colors.white, // Цвет текста на кнопке
+                  ),
+                )
               ],
             ),
           ),

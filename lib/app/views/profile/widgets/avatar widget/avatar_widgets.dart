@@ -1,13 +1,15 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/auth/auth_service.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class CircleAvatarWidgets extends StatelessWidget {
-  const CircleAvatarWidgets({
+  CircleAvatarWidgets({
     super.key,
   });
-
+  AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,10 +17,10 @@ class CircleAvatarWidgets extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: authService.handleSignOut,
           icon: Icon(
-            LineAwesomeIcons.arrow_left,
-            size: 40,
+            Icons.logout_outlined,
+            size: 30,
           ),
         ),
         Container(
