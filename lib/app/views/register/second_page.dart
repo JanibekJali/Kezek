@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
+import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
 class SecondPage extends StatefulWidget {
@@ -30,6 +31,7 @@ class _SecondPageState extends State<SecondPage> {
     }
     return null;
   }
+
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -69,39 +71,38 @@ class _SecondPageState extends State<SecondPage> {
       print('Repeat Password: $repeatPassword');
     }
   }
-Future<void> signUp() async {
-   
-  
+
+  Future<void> signUp() async {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-            
             email: emailController.text,
             password: passwordController.text,
           )
           .then((value) => {
-            FocusScope.of(context).requestFocus(FocusNode()),
+                FocusScope.of(context).requestFocus(FocusNode()),
                 // addUser(),
-              
-                
+
                 nameController.clear(),
                 emailController.clear(),
                 passwordController.clear(),
                 repeatPasswordController.clear(),
-              }).then((value) =>   Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomeView(),)),);
+              })
+          .then(
+            (value) => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NavbarPage(),
+                )),
+          );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         log('The password provided is too weak.');
-       
       } else if (e.code == 'email-already-in-use') {
         log('The account already exists for that email.');
-     
       }
-      setState(() {
-       
-      });
+      setState(() {});
     } catch (e) {
-     
       log('e ==> $e');
     }
   }
@@ -234,7 +235,7 @@ Future<void> signUp() async {
                               ),
                               onPressed: () {
                                 _submitForm();
-                              signUp();
+                                signUp();
                               },
                               child: Text('Sign Up'),
                             ),
