@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/components/constants/theme_const.dart';
+
+import '../../../google auth/firebasee_auth.dart';
 
 class ProfileName extends StatefulWidget {
   const ProfileName({Key? key}) : super(key: key);
@@ -9,6 +13,7 @@ class ProfileName extends StatefulWidget {
 }
 
 class _ProfileNameState extends State<ProfileName> {
+  final AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +26,7 @@ class _ProfileNameState extends State<ProfileName> {
           height: 6,
         ),
         Text(
-          'kadirovmuhammadaziz79@gmail.com',
+          FirebaseAuth.instance.currentUser!.email.toString(),
           style: kSubTitleTextStyly,
         ),
       ],
