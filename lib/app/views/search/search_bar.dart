@@ -44,10 +44,11 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white10,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 55, 93),
-        title: Text('Search App'),
+        title: Text('Kezek App'),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
           child: Padding(

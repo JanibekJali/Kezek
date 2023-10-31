@@ -7,6 +7,28 @@ class DentistsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List dentist = [
+      [
+        'Abdullaev Muhtar Kochkorovich',
+        'Technician',
+        'We give you good service'
+      ],
+      [
+        'Zakirov Yahyo Komiljonov',
+        'Dentist',
+        'Our customers are happy with us'
+      ],
+      [
+        'Shukurov Alisher Masrabovich',
+        'Dentist',
+        'Our customers are happy with us'
+      ],
+      [
+        'Samiev Abdulaziz Oktamovich',
+        'Dentist',
+        'Our service is fast, cheap and qualified'
+      ],
+    ];
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -19,48 +41,17 @@ class DentistsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 130,
-              child: UserCard(
-                onTap: () {},
-                username: 'Abdullaev Muhtar Kochkorovich',
-                subtitle: 'Dentist',
-                description: 'We give you good service',
-              ),
-            ),
-            SizedBox(
-              height: 130,
-              child: UserCard(
-                onTap: () {},
-                username: 'Shukurov Alisher Masrabovich',
-                subtitle: 'Dental Technician',
-                description: 'Our customers are happy with us',
-              ),
-            ),
-            SizedBox(
-              height: 130,
-              child: UserCard(
-                onTap: () {},
-                username: 'Zakirov Yahyo Komiljonov',
-                subtitle: 'Dentist',
-                description: 'We have very qualified personal',
-              ),
-            ),
-            SizedBox(
-              height: 130,
-              child: UserCard(
-                onTap: () {},
-                username: 'Samiev Abdulaziz Oktamovich',
-                subtitle: 'Dentist',
-                description: 'Very fast and good service',
-              ),
-            ),
-          ],
-        ),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1, childAspectRatio: 3 / 1),
+        itemCount: dentist.length,
+        physics: const BouncingScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          return UserCard(
+              username: dentist[index][0],
+              subtitle: dentist[index][1],
+              description: dentist[index][2]);
+        },
       ),
     );
   }
