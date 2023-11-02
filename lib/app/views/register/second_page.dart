@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/home/home_view.dart';
-import 'package:kazek/app/views/register/home_page.dart';
+// import 'package:kazek/app/views/home/home_view.dart';
+// import 'package:kazek/app/views/register/home_page.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
+
+import '../home/home_view.dart';
 
 class SecondPage extends StatefulWidget {
   @override

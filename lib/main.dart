@@ -5,6 +5,7 @@ import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'app/views/youtube view/youtubeView.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
+            // home: YoutubeView(),
             home: HomeView(),
 
             // home: SearchScreen(),
