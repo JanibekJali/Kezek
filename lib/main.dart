@@ -1,19 +1,21 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/register/home_page.dart';
-import 'package:kazek/app/views/search/search_bar.dart';
+import 'package:kazek/app/views/sed%20meseges/sedMeseges.dart';
 import 'package:kazek/components/constants/theme_const.dart';
-import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  // AwesomeNotifications().initialize();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(App());
 }
+//11 minut
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -28,7 +30,8 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
-            home: HomeView(),
+            // home: HomePageRegister(),
+            home: SedMeseges(),
 
             // home: SearchScreen(),
 

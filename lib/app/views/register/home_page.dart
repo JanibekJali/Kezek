@@ -7,12 +7,12 @@ import 'package:kazek/app/views/register/second_page.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:kazek/data/models/user_model.dart';
 
-class HomeView extends StatefulWidget {
+class HomePageRegister extends StatefulWidget {
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _HomePageRegisterState createState() => _HomePageRegisterState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomePageRegisterState extends State<HomePageRegister> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

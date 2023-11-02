@@ -247,7 +247,7 @@ class _SecondPageState extends State<SecondPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeView()));
+                                          builder: (context) => HomePageRegister()));
                                 },
                                 child: Text('You alredy have acount? Sing in '))
                           ],
