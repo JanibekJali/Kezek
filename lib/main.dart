@@ -28,7 +28,7 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
-            home: HomePage(),
+            home: HomeView(),
 
             // home: SearchScreen(),
 
