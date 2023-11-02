@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -152,7 +154,7 @@ class _SecondPageState extends State<SecondPage> {
                         child: Column(
                           children: [
                             Text(
-                              'Please Sign up',
+                              LocaleKeys.PlsSU.tr(),
                               style:
                                   TextStyle(fontSize: 20, color: Colors.black),
                             ),
@@ -165,7 +167,7 @@ class _SecondPageState extends State<SecondPage> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'Name',
+                                hintText: LocaleKeys.name.tr(),
                               ),
                               validator: _validateEmail,
                             ),
@@ -176,7 +178,7 @@ class _SecondPageState extends State<SecondPage> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'E-mail',
+                                hintText: LocaleKeys.em.tr(),
                               ),
                               validator: _validateEmail,
                             ),
@@ -187,7 +189,7 @@ class _SecondPageState extends State<SecondPage> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'Password',
+                                hintText: LocaleKeys.pas.tr(),
                                 suffixIcon: IconButton(
                                   icon: Icon(_isPasswordVisible
                                       ? Icons.visibility
@@ -209,7 +211,7 @@ class _SecondPageState extends State<SecondPage> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'Repeat Password',
+                                hintText: LocaleKeys.RP.tr(),
                                 suffixIcon: IconButton(
                                   icon: Icon(_isRepeatPasswordVisible
                                       ? Icons.visibility
@@ -237,7 +239,7 @@ class _SecondPageState extends State<SecondPage> {
                                 _submitForm();
                                 signUp();
                               },
-                              child: Text('Sign Up'),
+                              child: Text(LocaleKeys.SignUp.tr()),
                             ),
                             SizedBox(
                               height: 5,
@@ -247,9 +249,9 @@ class _SecondPageState extends State<SecondPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeView()));
+                                          builder: (context) => SignIn()));
                                 },
-                                child: Text('You alredy have acount? Sing in '))
+                                child: Text(LocaleKeys.AHAA.tr()))
                           ],
                         ),
                       ),
