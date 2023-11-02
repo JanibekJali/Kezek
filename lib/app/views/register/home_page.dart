@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/google%20auth/firebasee_auth.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/second_page.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final AuthService authService = AuthService();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -207,6 +209,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 50,
+                ),
+                ElevatedButton.icon(
+                  onPressed: authService.signinWithGoogle,
+                  icon: Icon(Icons.account_circle),
+                  label: Text('Войти через Google'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    onPrimary: Colors.white,
+                  ),
+                )
               ],
             ),
           ),

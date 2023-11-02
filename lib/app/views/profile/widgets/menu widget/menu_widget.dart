@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/google%20auth/firebasee_auth.dart';
 import 'package:kazek/app/views/profile/widgets/menu%20widget/contenersMenu.dart';
 
 class MenuWidget extends StatelessWidget {
-  const MenuWidget({Key? key}) : super(key: key);
+  final AuthService authService = AuthService();
+  MenuWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +14,7 @@ class MenuWidget extends StatelessWidget {
           height: 25,
         ),
         MenuWidgets(
+          onPressed: () {},
           icon: Icons.person,
           text: 'Контакты',
         ),
@@ -19,6 +22,7 @@ class MenuWidget extends StatelessWidget {
           height: 29,
         ),
         MenuWidgets(
+          onPressed: () {},
           icon: Icons.phone,
           text: 'Звонки',
         ),
@@ -26,6 +30,7 @@ class MenuWidget extends StatelessWidget {
           height: 29,
         ),
         MenuWidgets(
+          onPressed: () {},
           icon: Icons.person_add,
           text: 'Пригласить друзей',
         ),
@@ -33,6 +38,7 @@ class MenuWidget extends StatelessWidget {
           height: 29,
         ),
         MenuWidgets(
+          onPressed: () {},
           icon: Icons.group,
           text: 'Создайть группу',
         ),
@@ -40,15 +46,17 @@ class MenuWidget extends StatelessWidget {
           height: 29,
         ),
         MenuWidgets(
-          icon: Icons.bookmark,
-          text: 'Избранное',
+          onPressed: () {},
+          icon: Icons.settings,
+          text: 'Настройка',
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
-          icon: Icons.settings,
-          text: 'Настройка',
+          onPressed: authService.handleSignOut,
+          icon: Icons.exit_to_app,
+          text: 'выйти',
         ),
       ],
     );

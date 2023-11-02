@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 
 class MenuWidgets extends StatelessWidget {
+  final Function() onPressed;
   IconData icon;
   String text;
   MenuWidgets({
     Key? key,
     required this.icon,
     required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -16,30 +18,32 @@ class MenuWidgets extends StatelessWidget {
 
     return Column(
       children: [
-        Container(
-          height: 50,
-          width: width * 0.8,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              color: Theme.of(context).primaryColorLight),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 20,
-              ),
-              Icon(
-                icon,
-                size: 30,
-              ),
-              SizedBox(
-                width: 33,
-              ),
-              Text(
-                text,
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
+        GestureDetector(
+          child: Container(
+            height: 50,
+            width: width * 0.8,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Theme.of(context).primaryColorLight),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 20,
+                ),
+                Icon(
+                  icon,
+                  size: 30,
+                ),
+                SizedBox(
+                  width: 33,
+                ),
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
           ),
         )
       ],
