@@ -1,11 +1,11 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:kazek/app/views/home/home_view.dart';
-import 'package:kazek/app/views/register/home_page.dart';
+
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'app/views/home/home_view.dart';
 import 'app/views/youtube view/youtubeView.dart';
 import 'firebase_options.dart';
 
@@ -31,14 +31,13 @@ class App extends StatelessWidget {
           return MaterialApp(
             theme: myTheme,
 
-           // home: HomePage(),
-            
-
-            // home: YoutubeView(),
+            //  home: HomePage(),
             home: HomeView(),
 
-            // home: SearchScreen(),
+            // home: YoutubeView(),
+            // home: HomeView(),
 
+            // home: SearchScreen(),
 
             debugShowCheckedModeBanner: false,
           );

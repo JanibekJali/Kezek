@@ -105,7 +105,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: controller.text.isEmpty
-          ? HomeView()
+          ? CatalogWidget()
           : SearchingResultPage(filteredItems: filteredItems),
     );
   }

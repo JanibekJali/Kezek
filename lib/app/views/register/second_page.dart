@@ -9,12 +9,12 @@ import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 
 import '../home/home_view.dart';
 
-class SecondPage extends StatefulWidget {
+class SignUpView extends StatefulWidget {
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _SignUpViewState createState() => _SignUpViewState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _SignUpViewState extends State<SignUpView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
