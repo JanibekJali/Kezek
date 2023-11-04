@@ -7,15 +7,6 @@ class ChemistsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List pharmacy = [
-      ['Darmek Farm № 120', 'Drug sevice', 'We give you good service'],
-      ['Neman №1', 'Drug sevice', 'Our customers are happy with us'],
-      [
-        'Farm Lend № 3',
-        'Drug sevice',
-        'Our service is fast, cheap and qualified'
-      ],
-    ];
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -28,17 +19,39 @@ class ChemistsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 1, childAspectRatio: 3 / 1),
-        itemCount: pharmacy.length,
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (BuildContext context, int index) {
-          return UserCard(
-              username: pharmacy[index][0],
-              subtitle: pharmacy[index][1],
-              description: pharmacy[index][2]);
-        },
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 130,
+              child: UserCard(
+                onTap: () {},
+                username: 'Darmek Farm № 120',
+                subtitle: 'Drug sevice',
+                description: 'We give you good service',
+              ),
+            ),
+            SizedBox(
+              height: 130,
+              child: UserCard(
+                onTap: () {},
+                username: 'Neman №1',
+                subtitle: 'Drug sevice',
+                description: 'Our customers are happy with us',
+              ),
+            ),
+            SizedBox(
+              height: 130,
+              child: UserCard(
+                onTap: () {},
+                username: 'Farm Lend № 3',
+                subtitle: 'Drug sevice',
+                description: 'We have very qualified personal',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
