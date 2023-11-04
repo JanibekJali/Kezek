@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../translations/local_keys.g.dart';
 import '../catalog_views/car_repair_page.dart';
 import '../catalog_views/chemists_page.dart';
 import '../catalog_views/dentists_page.dart';
@@ -22,7 +24,7 @@ class CatalogWidget extends StatelessWidget {
           children: [
             // catalogs
             Catalog(
-              title: 'Hair Cut',
+              title: LocaleKeys.hairCutter.tr(),
               imageName: 'assets/images/hair_cut.png',
               onTap: () {
                 Navigator.push(
@@ -32,7 +34,7 @@ class CatalogWidget extends StatelessWidget {
               },
             ),
             Catalog(
-              title: 'Car Repair',
+              title: LocaleKeys.carRepair.tr(),
               imageName: 'assets/images/car_repair.png',
               onTap: () {
                 Navigator.push(
@@ -42,7 +44,7 @@ class CatalogWidget extends StatelessWidget {
               },
             ),
             Catalog(
-              title: 'Chemist\'s',
+              title: LocaleKeys.chemists.tr(),
               imageName: 'assets/images/chemists.png',
               onTap: () {
                 Navigator.push(
@@ -52,7 +54,7 @@ class CatalogWidget extends StatelessWidget {
               },
             ),
             Catalog(
-              title: 'Dentist',
+              title: LocaleKeys.dentists.tr(),
               imageName: 'assets/images/dentist.png',
               onTap: () {
                 Navigator.push(

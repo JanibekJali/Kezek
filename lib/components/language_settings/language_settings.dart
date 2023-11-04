@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-
+enum SampleItem { itemOne, itemTwo, itemThree }
 class LanguageSettings extends StatelessWidget {
 const LanguageSettings({ Key? key }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context){
@@ -14,8 +15,6 @@ const LanguageSettings({ Key? key }) : super(key: key);
     if (value == "English") {
       // add desired output
     }else if(value == "Russian"){
-      // add desired output
-    }else if(value == "Japan"){
       // add desired output
     }
   },
@@ -72,7 +71,7 @@ const LanguageSettings({ Key? key }) : super(key: key);
           ),
           InkWell(
             onTap: () {
-
+            
                
             },
             child: const Text(

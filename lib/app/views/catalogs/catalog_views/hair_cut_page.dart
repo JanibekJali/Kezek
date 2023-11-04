@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/profile.dart';
 
 
+import '../../../../translations/local_keys.g.dart';
 import '../widgets/user_card.dart';
 
 
@@ -14,7 +16,7 @@ class HairCutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Hair Cutters'),
+        title:  Text(LocaleKeys.hairCutters.tr()),
         centerTitle: true,
         backgroundColor: Colors.blue[900],
         shape: const RoundedRectangleBorder(
@@ -35,8 +37,8 @@ class HairCutPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => Profile()));
                 },
                 username: 'Boroda Barbershop ',
-                subtitle: 'Men Hair Cutter',
-                description: 'We give you good service',
+                subtitle: LocaleKeys.menHairCutter.tr(),
+                description: LocaleKeys.wegiveyougoodservice.tr(),
               ),
             ),
             SizedBox(
@@ -44,8 +46,8 @@ class HairCutPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Chach Tarach №1',
-                subtitle: 'Men Hair Cutter',
-                description: 'Our customers are happy with us',
+                subtitle: LocaleKeys.menHairCutter.tr(),
+                description: LocaleKeys.ourcustomersarehappywithus,
               ),
             ),
             SizedBox(
@@ -53,8 +55,8 @@ class HairCutPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Parikmaxer',
-                subtitle: 'Men Hair Cutter',
-                description: 'We have very qualified personal',
+                subtitle: LocaleKeys.menHairCutter.tr(),
+                description: LocaleKeys.wehaveveryqualifiedpersonal.tr(),
               ),
             ),
             SizedBox(
@@ -62,8 +64,8 @@ class HairCutPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Barber shop INSPECTOR',
-                subtitle: 'Men Hair Cutter',
-                description: 'Very fast and good service',
+                subtitle: LocaleKeys.menHairCutter.tr(),
+                description: LocaleKeys.veryfastandgoodservice.tr(),
               ),
             ),
           ],

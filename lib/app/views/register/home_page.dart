@@ -8,7 +8,9 @@ import 'package:kazek/app/views/register/second_page.dart';
 import 'package:kazek/components/language_settings/language_settings.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:kazek/data/models/user_model.dart';
-import 'package:kazek/data/translations/local_keys.g.dart';
+
+
+import '../../../translations/local_keys.g.dart';
 
 class SignIn extends StatefulWidget {
   @override

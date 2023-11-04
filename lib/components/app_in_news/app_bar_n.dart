@@ -33,7 +33,7 @@ class appBarN extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Text(
-                      'Новости на сегодня',
+                      'News for today',
                       style: TextStyle(
                           fontSize: 15, fontWeight: FontWeight.bold),
                     ),
@@ -41,7 +41,7 @@ class appBarN extends StatelessWidget {
               size1,
               size1,
               Text(
-                'Самые свежие новости прямо тут',
+                'All fresh news are here',
                 style: TextStyle(
                   
                     fontSize: 25,

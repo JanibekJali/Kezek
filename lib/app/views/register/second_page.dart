@@ -7,7 +7,8 @@ import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
-import 'package:kazek/data/translations/local_keys.g.dart';
+
+import 'package:kazek/translations/local_keys.g.dart';
 
 class SecondPage extends StatefulWidget {
   @override

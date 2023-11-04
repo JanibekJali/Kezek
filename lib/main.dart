@@ -7,7 +7,7 @@ import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:kazek/data/translations/codegen_loader.g.dart';
+import 'package:kazek/translations/codegen_loader.g.dart';
 import 'firebase_options.dart';
 
 void main() async {
