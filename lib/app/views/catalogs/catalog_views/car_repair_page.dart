@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
 
 import '../widgets/user_card.dart';
 
@@ -10,7 +12,7 @@ class CarRepairPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Car Repair'),
+        title: Text(LocaleKeys.carRepair.tr()),
         centerTitle: true,
         backgroundColor: Colors.blue[900],
         shape: const RoundedRectangleBorder(
@@ -28,8 +30,8 @@ class CarRepairPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Автосервис Bosch',
-                subtitle: 'Car Repair',
-                description: 'We repair and restaurate all cars',
+                subtitle: LocaleKeys.carRepair.tr(),
+                description: LocaleKeys.weRepairAndRestaurateallCars.tr(),
               ),
             ),
             SizedBox(
@@ -37,8 +39,8 @@ class CarRepairPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Ош-Автогаз',
-                subtitle: 'Gas service',
-                description: 'Installing LPG for cars',
+                subtitle: LocaleKeys.gasService.tr(),
+                description: LocaleKeys.installingLPGforCars.tr(),
               ),
             ),
             SizedBox(
@@ -46,17 +48,17 @@ class CarRepairPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Vulkanisation',
-                subtitle: 'Tire Service',
-                description: 'Our service is fast, cheap and qualified',
+                subtitle: LocaleKeys.tireService.tr(),
+                description: LocaleKeys.ourServiceisFastCheapandQualified,
               ),
             ),
             SizedBox(
               height: 130,
               child: UserCard(
                 onTap: () {},
-                username: 'Автопрофи',
-                subtitle: 'Car Fix Service',
-                description: 'We are the best',
+                username: 'AutoProfessional',
+                subtitle: LocaleKeys.carFixService.tr(),
+                description: LocaleKeys.wearethebest.tr(),
               ),
             ),
           ],

@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/news/news.dart';
 import 'package:kazek/app/views/profile/MyProfileView.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
+
 
 class NavbarPage extends StatefulWidget {
   const NavbarPage({Key? key}) : super(key: key);
@@ -42,12 +45,12 @@ class _NavbarPageState extends State<NavbarPage> {
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Serch'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: LocaleKeys.search.tr()),
             BottomNavigationBarItem(
-                icon: Icon(Icons.chat_rounded), label: 'Articles'),
+                icon: Icon(Icons.chat_rounded), label: LocaleKeys.articles.tr()),
             BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month_outlined), label: 'Lessons'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+                icon: Icon(Icons.calendar_month_outlined), label: LocaleKeys.lessons.tr()),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: LocaleKeys.profile.tr()),
           ],
         ),
       ),

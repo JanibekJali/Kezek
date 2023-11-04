@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/profile/widgets/menu%20widget/contenersMenu.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
+
 
 class MenuWidget extends StatelessWidget {
   const MenuWidget({Key? key}) : super(key: key);
@@ -13,42 +16,42 @@ class MenuWidget extends StatelessWidget {
         ),
         MenuWidgets(
           icon: Icons.person,
-          text: 'Контакты',
+          text: LocaleKeys.contacts.tr(),
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
           icon: Icons.phone,
-          text: 'Звонки',
+          text: LocaleKeys.calls.tr(),
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
           icon: Icons.person_add,
-          text: 'Пригласить друзей',
+          text: LocaleKeys.invitefriends.tr(),
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
           icon: Icons.group,
-          text: 'Создайть группу',
+          text: LocaleKeys.createagroup.tr(),
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
           icon: Icons.bookmark,
-          text: 'Избранное',
+          text: LocaleKeys.favorites.tr(),
         ),
         SizedBox(
           height: 29,
         ),
         MenuWidgets(
           icon: Icons.settings,
-          text: 'Настройка',
+          text: LocaleKeys.settings.tr(),
         ),
       ],
     );

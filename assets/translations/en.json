@@ -1,0 +1,68 @@
+{
+    "Sign Up": " Sign Up",
+    "Sign In": " Sign In",
+    "PlsSU": "Please Sign Up ",
+    "PlsSI": "Please Sign In ",
+    "em": "E-mail",
+    "pas": "Password",
+    "AHAA": "Already have an account? Sign In",
+    "RP": "Repeat Password",
+    "DHA": "Don't have an account? Sign Up",
+    "name": "Name",
+    "catalogOfCars": {
+        "carRepair": "Car Repair",
+        "weRepairAndRestaurateallCars": "We repair and restaurate all cars",
+        "gasService": "Gas service",
+        "installingLPGforCars": "installing LPG for cars",
+        "tireService": "Tire Service",
+        "ourServiceisFastCheapandQualified": "Our service is fast, cheap and qualified",
+        "carFixService": "Car Fix Service",
+        "wearethebest": "We are the best"
+    },
+    "cataogOfChemists": {
+        "chemists": "Chemists",
+        "drugsevice": "Drug sevice",
+        "wegiveyougoodservice": "We give you good service",
+        "ourcustomersarehappywithus": "Our customers are happy with us",
+        "wehaveveryqualifiedpersonal": "We have very qualified personal"
+    },
+    "catalogOfDentists": {
+        "dentists": "Dentists",
+        "veryfastandgoodservice": "Very fast and good service",
+        "dentalTechnician": "Dental Technician"
+    },
+    "catalogOfHairCutters": {
+        "hairCutters": "Hair Cutters",
+        "menHairCutter": "Men Hair Cutter"
+    },
+    "profileOfHair": {
+        "hairCutter": "Hair Cutter",
+        "experience 5 years": "Experience 5 years",
+        "acceptsonline": "Accepts online",
+        "getinline": "Get in line"
+    },
+    "profile": {
+        "whatworriesyou": "What worries you?",
+
+        "contacts": "Contacts",
+        "calls": "Calls",
+        "invitefriends": "Invite friends",
+        "createagroup": "Create a group",
+        "favorites": "Favorites",
+        "settings": "Settings"
+    },
+    "bottomNavBar": {
+        "search": "Search",
+        "allfreshnewsarehere": "All fresh news are here",
+        "newsfortoday": "News for today",
+        "articles": "Articles",
+        "lessons": "Lessons",
+        "profile": "Profile"
+    }
+
+
+
+
+
+
+}

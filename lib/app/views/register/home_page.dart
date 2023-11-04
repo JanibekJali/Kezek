@@ -1,18 +1,21 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/second_page.dart';
+import 'package:kazek/components/language_settings/language_settings.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:kazek/data/models/user_model.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
 
-class HomeView extends StatefulWidget {
+class SignIn extends StatefulWidget {
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _SignInState createState() => _SignInState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _SignInState extends State<SignIn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -140,11 +143,23 @@ class _HomeViewState extends State<HomeView> {
                         key: _formKey,
                         child: Column(
                           children: [
-                            Text(
-                              'Please Sign up',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    LocaleKeys.PlsSI.tr(),
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Container(
+                                    child: InkWell(
+                                        onTap: () {},
+                                        child: LanguageSettings()),
+                                  ),
+                                ]),
                             SizedBox(
                               height: 20,
                             ),
@@ -154,7 +169,7 @@ class _HomeViewState extends State<HomeView> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'E-mail',
+                                hintText: LocaleKeys.em.tr(),
                               ),
                               validator: _validateEmail,
                             ),
@@ -165,7 +180,7 @@ class _HomeViewState extends State<HomeView> {
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                hintText: 'Password',
+                                hintText: LocaleKeys.pas.tr(),
                                 suffixIcon: IconButton(
                                   icon: Icon(_isPasswordVisible
                                       ? Icons.visibility
@@ -182,7 +197,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             SizedBox(height: 32.0),
                             ElevatedButton(
-                                child: Text('Log in'),
+                                child: Text(LocaleKeys.SignIn.tr()),
                                 style: ElevatedButton.styleFrom(
                                   primary: Color.fromARGB(255, 7, 10, 212),
                                   shape: RoundedRectangleBorder(
@@ -200,7 +215,7 @@ class _HomeViewState extends State<HomeView> {
                                       MaterialPageRoute(
                                           builder: (context) => SecondPage()));
                                 },
-                                child: Text('You dont have acount? Sing up '))
+                                child: Text(LocaleKeys.DHA.tr()))
                           ],
                         ),
                       ),
