@@ -1,8 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/search/searching_result.dart';
+import 'package:kazek/components/language_settings/language_settings.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
+
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -47,7 +51,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: Colors.white10,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 55, 93),
-        title: Text('Search App'),
+        title: Row(children:[ Text(LocaleKeys.search.tr()),Spacer(),LanguageSettings()]),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
           child: Padding(
@@ -77,9 +81,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       },
                       cursorColor: Colors.white,
                       style: const TextStyle(fontSize: 15, color: Colors.white),
-                      decoration: const InputDecoration(
+                      decoration:  InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Search...',
+                          hintText: LocaleKeys.search.tr(),
                           hintStyle:
                               TextStyle(fontSize: 15, color: Colors.white)),
                     ),

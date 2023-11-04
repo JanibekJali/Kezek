@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
+
 
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
@@ -109,7 +112,7 @@ class Profile extends StatelessWidget {
                           color: Colors.blue[900],
                         ),
                         child: Text(
-                          'Get in line'.toUpperCase(),
+                          LocaleKeys.getinline.tr().toUpperCase(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.w700),
@@ -129,12 +132,12 @@ class Profile extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white),
-                child: const Column(
+                child:  Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
-                        'About The Service',
+                        LocaleKeys.acceptsonline.tr(),
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,

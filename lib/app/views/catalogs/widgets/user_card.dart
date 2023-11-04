@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
+
 
 class UserCard extends StatefulWidget {
   UserCard(
@@ -65,7 +68,7 @@ class _UserCardState extends State<UserCard> {
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.blue[900]),
                     child: Text(
-                      'Accepts online',
+                      LocaleKeys.acceptsonline.tr(),
                       style: TextStyle(
                           fontSize: 10,
                           color: Colors.white,

@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/data/translations/local_keys.g.dart';
 
 import '../widgets/user_card.dart';
 
@@ -10,7 +12,7 @@ class ChemistsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Chemists'),
+        title:  Text(LocaleKeys.chemists.tr()),
         centerTitle: true,
         backgroundColor: Colors.blue[900],
         shape: const RoundedRectangleBorder(
@@ -28,8 +30,8 @@ class ChemistsPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Darmek Farm № 120',
-                subtitle: 'Drug sevice',
-                description: 'We give you good service',
+                subtitle: LocaleKeys.drugsevice.tr(),
+                description: LocaleKeys.wegiveyougoodservice.tr(),
               ),
             ),
             SizedBox(
@@ -37,8 +39,8 @@ class ChemistsPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Neman №1',
-                subtitle: 'Drug sevice',
-                description: 'Our customers are happy with us',
+                subtitle: LocaleKeys.drugsevice.tr(),
+                description: LocaleKeys.ourcustomersarehappywithus.tr(),
               ),
             ),
             SizedBox(
@@ -46,8 +48,8 @@ class ChemistsPage extends StatelessWidget {
               child: UserCard(
                 onTap: () {},
                 username: 'Farm Lend № 3',
-                subtitle: 'Drug sevice',
-                description: 'We have very qualified personal',
+                subtitle: LocaleKeys.drugsevice.tr(),
+                description: LocaleKeys.wehaveveryqualifiedpersonal.tr(),
               ),
             ),
           ],
