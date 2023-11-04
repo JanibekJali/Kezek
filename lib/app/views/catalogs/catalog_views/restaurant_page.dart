@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/user_card.dart';
 
-class HairCutPage extends StatelessWidget {
-  const HairCutPage({Key? key}) : super(key: key);
-
-  @override
+class RestaurantPage extends StatelessWidget {
+const RestaurantPage({ Key? key }) : super(key: key);
+@override
   Widget build(BuildContext context) {
-    List hairCutters = [
+    List restaurant = [
       [
-        'Boroda Barbershop ',
-        'Men Hair Cutter',
-        'We give you good service',
+        'Islambek',
+        'Restaurant',
+        'We give you good service'
       ],
       [
-        'Barber shop INSPECTOR',
-        'Men Hair Cutter',
-        'Very fast and good service',
+        'Atabek',
+        'Restaurant',
+        'Our customers are happy with us'
       ],
       [
-        'Chach Tarach №1',
-        'Men Hair Cutter',
-        'Our customers are happy with us',
+        'Altyn',
+        'Restaurant',
+        'Our customers are happy with us'
       ],
       [
-        'Parikmaxer',
-        'Men Hair Cutter',
-        'We have very qualified personal',
-      ]
+        'Ulug Ata',
+        'Restaurant',
+        'Our service is fast, cheap and qualified'
+      ],
     ];
-
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Hair Cutters'),
+        title: const Text('Restaurants'),
         centerTitle: true,
         backgroundColor: Colors.blue[900],
         shape: const RoundedRectangleBorder(
@@ -44,13 +43,13 @@ class HairCutPage extends StatelessWidget {
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1, childAspectRatio: 3 / 1),
-        itemCount: hairCutters.length,
+        itemCount: restaurant.length,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return UserCard(
-              username: hairCutters[index][0],
-              subtitle: hairCutters[index][1],
-              description: hairCutters[index][2]);
+              username: restaurant[index][0],
+              subtitle: restaurant[index][1],
+              description: restaurant[index][2]);
         },
       ),
     );

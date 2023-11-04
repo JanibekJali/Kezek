@@ -12,13 +12,9 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Text(
-        'Что вас беспокоит?',
-        style: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
-      ),
-      CatalogWidget(),
-    ]);
+    return Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: CatalogWidget());
   }
 }

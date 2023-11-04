@@ -1,5 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/register/home_page.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
@@ -29,10 +30,15 @@ class App extends StatelessWidget {
         builder: (_, myTheme) {
           return MaterialApp(
             theme: myTheme,
+
+           // home: HomePage(),
+            
+
             // home: YoutubeView(),
             home: HomeView(),
 
             // home: SearchScreen(),
+
 
             debugShowCheckedModeBanner: false,
           );
