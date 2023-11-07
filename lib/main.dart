@@ -5,8 +5,11 @@ import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:kazek/components/nav_bottom/bottom_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:kazek/components/shimmer/components/catalog_simmer.dart';
+
 import 'app/views/home/home_view.dart';
 import 'app/views/youtube view/youtubeView.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -31,8 +34,8 @@ class App extends StatelessWidget {
           return MaterialApp(
             theme: myTheme,
 
-            //  home: HomePage(),
             home: HomeView(),
+
 
             // home: YoutubeView(),
             // home: HomeView(),

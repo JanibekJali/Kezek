@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/search/searching_result.dart';
+import 'package:kazek/components/shimmer/components/catalog_simmer.dart';
+import 'package:kazek/components/shimmer/components/search_result_shimmer.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -10,6 +12,10 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  List<String> filteredItems = [];
+  TextEditingController controller = TextEditingController();
+  bool isLoading = false;
+
   List<String> items = [
     'Eminem',
     'Boris',
@@ -26,9 +32,6 @@ class _SearchScreenState extends State<SearchScreen> {
     'Watermelon',
   ];
 
-  List<String> filteredItems = [];
-  TextEditingController controller = TextEditingController();
-
   void filterItems(String query) {
     filteredItems.clear();
     if (query.isNotEmpty) {
@@ -38,6 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
         }
       });
     }
+
     setState(() {});
   }
 
@@ -48,6 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: Colors.white10,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 55, 93),
+        automaticallyImplyLeading: false,
         title: Text('Kezek App'),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60.0),
@@ -74,6 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       controller: controller,
                       onChanged: (query) {
                         filterItems(query);
+                        Duration(seconds: 2);
                         setState(() {});
                       },
                       cursorColor: Colors.white,

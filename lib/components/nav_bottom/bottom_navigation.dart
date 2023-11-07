@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/catalogs/widgets/catalog_widget.dart';
 import 'package:kazek/app/views/home/home_view.dart';
 import 'package:kazek/app/views/news/news.dart';
 import 'package:kazek/app/views/profile/MyProfileView.dart';
 import 'package:kazek/app/views/search/search_bar.dart';
+import 'package:kazek/components/shimmer/components/catalog_simmer.dart';
+import 'package:kazek/components/shimmer/components/search_result_shimmer.dart';
 
 class NavbarPage extends StatefulWidget {
   const NavbarPage({Key? key}) : super(key: key);
@@ -16,7 +19,9 @@ class _NavbarPageState extends State<NavbarPage> {
   final _screens = [
     SearchScreen(),
     NewsPage(),
-    HomeView(),
+    // CatalogWidget(),
+    // CatalogSimmer(),
+    SearchResultShimmer(),
     MyProfileView(),
   ];
   @override
