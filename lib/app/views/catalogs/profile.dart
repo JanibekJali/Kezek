@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:kazek/app/views/catalogs/widgets/get_in_line_widgets.dart';
 
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
@@ -98,9 +97,24 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                   //
-                  GetInLineWidgets(
-                    text: 'Get in line',
-                  )
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                        width: 300,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.blue[900],
+                        ),
+                        child: Text(
+                          'Get in line'.toUpperCase(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w700),
+                        )),
+                  ),
                 ]),
               ),
 

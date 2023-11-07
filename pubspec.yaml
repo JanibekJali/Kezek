@@ -46,8 +46,9 @@ dependencies:
   youtube_player_flutter: ^8.1.2
 
   go_router: ^12.0.1
-  firebase_messaging: ^14.7.3
-  awesome_notifications: ^0.8.2
+
+  awesome_notifications: ^0.6.21
+  firebase_messaging: ^14.2.1
 
 dev_dependencies:
   flutter_test:
