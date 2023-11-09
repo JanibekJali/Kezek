@@ -1,5 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/catalogs/profile.dart';
 
 import 'package:kazek/app/views/search/search_bar.dart';
 import 'package:kazek/components/constants/theme_const.dart';
@@ -33,6 +34,7 @@ class App extends StatelessWidget {
 
             //  home: HomePage(),
             home: HomeView(),
+            // home: Profile(),
 
             // home: YoutubeView(),
             // home: HomeView(),

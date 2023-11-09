@@ -16,9 +16,9 @@ class Profile extends StatelessWidget {
         title: const Text('Hair Cutter'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Center(
+      body: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Column(
             children: [
               Container(
@@ -201,7 +201,7 @@ class Profile extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(15),
                           child: Container(
-                            height: height * 0.1,
+                            height: height * 0.09,
                             width: width * 0.87,
                             decoration: BoxDecoration(
                                 color: Colors.white,

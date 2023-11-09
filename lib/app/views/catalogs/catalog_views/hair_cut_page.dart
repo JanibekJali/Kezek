@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kazek/app/views/catalogs/profile.dart';
 import '../widgets/user_card.dart';
 
 class HairCutPage extends StatelessWidget {
@@ -48,6 +49,8 @@ class HairCutPage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return UserCard(
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Profile())),
               username: hairCutters[index][0],
               subtitle: hairCutters[index][1],
               description: hairCutters[index][2]);
