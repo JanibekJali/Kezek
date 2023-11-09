@@ -67,7 +67,6 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> signIn() async {
-    setState(() {});
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(

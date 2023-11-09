@@ -14,6 +14,7 @@ class SearchingResultPage extends StatelessWidget {
       children: [
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: filteredItems.length,
             itemBuilder: (context, index) {
               return Padding(
