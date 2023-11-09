@@ -4,8 +4,6 @@ import 'package:kazek/app/views/FIREbase%20notification/messeges.dart';
 import 'package:kazek/components/constants/theme_const.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'app/views/home/home_view.dart';
-
 import 'firebase_options.dart';
 
 void main() async {

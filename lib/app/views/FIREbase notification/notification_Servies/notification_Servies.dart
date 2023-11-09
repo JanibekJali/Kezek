@@ -1,8 +1,31 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:math';
 
-//10min
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+//19:38
+
 class NotificationServies {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+  void initLocalNotification(
+      BuildContext context, RemoteMessage message) async {
+    var androidInitializationSettings =
+        AndroidInitializationSettings('${Icons.notifications_active_rounded}');
+    var iosInitializationSettings = const DarwinInitializationSettings();
+    var initializationSettings = InitializationSettings(
+      android: androidInitializationSettings,
+      iOS: iosInitializationSettings,
+    );
+    await _flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (payloyd) {},
+    );
+  }
+
   void requestNotificationPermition() async {
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
@@ -15,10 +38,68 @@ class NotificationServies {
     );
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       print('User granted permision');
-    } else if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
       print('User granted provisional permision');
     } else {
       print('User denied permision');
     }
+  }
+
+  Future<String> getDeviesToken() async {
+    String? token = await messaging.getToken();
+    return token!;
+  }
+
+  void isTokenRefresh() async {
+    messaging.onTokenRefresh.listen(
+      (event) {
+        event.toString();
+        print('Refresh');
+      },
+    );
+  }
+
+  void FirebaseInt() {
+    FirebaseMessaging.onMessage.listen((messege) {
+      if (kDebugMode) {
+        print(messege.notification!.title.toString());
+        print(messege.notification!.body.toString());
+      }
+      showNotification(messege);
+    });
+  }
+
+  Future<void> showNotification(RemoteMessage message) async {
+    AndroidNotificationChannel channel = AndroidNotificationChannel(
+        Random.secure().nextInt(10000).toString(),
+        'HIfgnotification important ',
+        importance: Importance.max);
+    AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+            channel.id.toString(), channel.name.toString(),
+            channelDescription: 'your channel description',
+            importance: Importance.high,
+            priority: Priority.high,
+            ticker: 'ticker');
+    const DarwinNotificationDetails darwinNotificationDetails =
+        DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+
+    NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+      iOS: darwinNotificationDetails,
+    );
+
+    Future.delayed(Duration.zero, () {
+      _flutterLocalNotificationsPlugin.show(
+          0,
+          message.notification!.title.toString(),
+          message.notification!.body.toString(),
+          notificationDetails);
+    });
   }
 }
